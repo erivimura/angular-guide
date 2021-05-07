@@ -24,4 +24,9 @@ export class PaginaComponent implements OnInit {
 
   }
 
+  redirect() {
+    this._router.navigate(['/formulario']); //Redirige a pagina formulario
+    //this._router.navigate(['/pagina', 'Erika']); //Redirige a pagina actual + parametros
+  }
+
 }
