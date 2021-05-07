@@ -15,7 +15,8 @@ const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'blog', component: BlogComponent},
     {path: 'formulario', component: FormularioComponent},
-    {path: 'pagina', component: PaginaComponent},
+    {path: 'pagina', component: PaginaComponent}, //Se muestra sin parametros
+    {path: 'pagina/:nombre', component: PaginaComponent}, //Se muestra con parametros
     {path: '**', component: ErrorComponent} //Debe ser la ultima
 ];
 
