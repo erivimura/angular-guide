@@ -3,13 +3,24 @@
 <div class="center">
     <section id="content">
 
+        <div *ngIf="favorita" id="favorita">
+            <h2 class="subheader">
+                Película favorita
+            </h2> 
+            <h4>{{favorita.title}}</h4>
+            <h5>{{favorita.year}}</h5>
+        </div>
+
         <h2 class="subheader">Listado de Películas</h2>
 
         <!--Listado Películas-->
         <div id="articles" *ngIf="peliculas">
 
             <div *ngFor="let pelicula of peliculas; let i = index;">
-                <app-pelicula [pelicula]="pelicula"></app-pelicula>
+                <app-pelicula 
+                    [pelicula]="pelicula"
+                    (peliculaFavorita)="showFavorita($event)"
+                ></app-pelicula>
             </div>            
 
         </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Pelicula } from '../../models/pelicula';
 
 @Component({
@@ -9,10 +9,17 @@ import { Pelicula } from '../../models/pelicula';
 export class PeliculaComponent implements OnInit {
 
   @Input() pelicula: Pelicula;
+  @Output() peliculaFavorita = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  setFavorita(event, pelicula) {
+    this.peliculaFavorita.emit({
+      pelicula: pelicula
+    });
   }
 
 }
