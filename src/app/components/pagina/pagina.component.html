@@ -1,7 +1,7 @@
 <h1 class="subheader">Página</h1>
 
-<div *ngIf="nombre; else noHayParametros">
-    <p>El nombre es: {{nombre}}</p>
+<div *ngIf="nombre && apellido; else noHayParametros">
+    <p>El nombre es: {{nombre}} {{apellido}}</p>
 </div>
 
 <ng-template #noHayParametros>

@@ -9,6 +9,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class PaginaComponent implements OnInit {
 
   public nombre: string = '';
+  public apellido: string = '';
 
   constructor(
     private _route: ActivatedRoute,
@@ -18,8 +19,9 @@ export class PaginaComponent implements OnInit {
   ngOnInit(): void {
 
     //Obtiene datos de la ruta
-    this._route.params.subscribe((params: Params)=> {
+    this._route.params.subscribe((params: Params) => {
       this.nombre = params.nombre;
+      this.apellido = params.apellido;
     });
 
   }
