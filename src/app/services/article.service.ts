@@ -16,13 +16,16 @@ export class ArticleService{
     }
 
     getArticles(last:any = null):Observable<any> {
-        var articles = '/articles';
+        var articles = 'articles';
 
         if (last != null) {
-            articles = '/articles/' + last;
+            articles = 'articles/' + last;
         }
         
         return this._http.get(this.url + articles);
     }
    
+    getArticle(articleId:any):Observable<any> {
+        return this._http.get(this.url + 'article/' + articleId);
+    }
 }
