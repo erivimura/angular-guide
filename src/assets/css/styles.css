@@ -213,7 +213,7 @@ body {
 .btn{
    display: block;
    background: black;
-   color: white;
+   color: white !important;
    padding: 15px; 
    font-weight: bold;
    text-transform: uppercase;
@@ -223,14 +223,32 @@ body {
    transition: 300ms all;
    border: none;
    cursor:pointer;
+   text-align: center;
+   text-decoration: none !important;
 }
 
 .btn-success{
-    background: rgb(23, 150, 19);
+    background: green;    
 }
 
 .btn-success:hover{
-    background:black;
+    opacity: 0.8;
+}
+
+.btn-warning{
+    background: orange;
+}
+
+.btn-warning:hover{
+    opacity: 0.8;
+}
+
+.btn-danger{
+    background: red;
+}
+
+.btn-danger:hover{
+    opacity: 0.8;
 }
 
 .mid-form{
