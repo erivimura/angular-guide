@@ -15,8 +15,14 @@ export class ArticleService{
         this.url = Global.url;
     }
 
-    getArticles():Observable<any>{
-        return this._http.get(this.url + '/articles');
+    getArticles(last:any = null):Observable<any> {
+        var articles = '/articles';
+
+        if (last != null) {
+            articles = '/articles/' + last;
+        }
+        
+        return this._http.get(this.url + articles);
     }
    
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from '../../services/article.service';
-import { Global } from '../../services/global';
 
 @Component({
   selector: 'app-blog',
@@ -11,14 +10,11 @@ import { Global } from '../../services/global';
 })
 export class BlogComponent implements OnInit {
 
-  public articles: Article[];
-  public url: string;
+  public articles: Article[];  
 
   constructor(
     private _articleService: ArticleService
-  ) {
-    this.url = Global.url;
-   }
+  ) {}
 
   ngOnInit(): void {
     this.getArticles(); 
