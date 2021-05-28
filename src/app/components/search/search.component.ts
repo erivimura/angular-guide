@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from '../../services/article.service';
-import { Global } from '../../services/global';
 
 @Component({
   selector: 'app-search',
@@ -17,8 +16,7 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private _articleService: ArticleService,
-    private _route: ActivatedRoute,
-    private _router: Router
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
