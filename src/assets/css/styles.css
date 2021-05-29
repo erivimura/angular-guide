@@ -488,3 +488,11 @@ textarea{
        padding-top: 35px;
     }
 }
+
+.btn.up_btn.afu-attach-pin {
+    display: block !important;
+    width: 100% !important;
+    max-width: 90% !important;
+    color: black !important;
+    margin-top: 15px !important;
+}
