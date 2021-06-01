@@ -5,17 +5,19 @@ import { Global } from '../../services/global';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'app-article-new',
-  templateUrl: './article-new.component.html',
-  styleUrls: ['./article-new.component.css'],
+  selector: 'app-article-edit',
+  templateUrl: '../article-new/article-new.component.html', //Reutilizar vista
+  styleUrls: ['./article-edit.component.css'],
   providers: [ArticleService]
 })
-export class ArticleNewComponent implements OnInit {
+export class ArticleEditComponent implements OnInit {
 
   public article: Article = new Article('' , '', '', null, null);  
   public status: string = '';
-  public isEdit: boolean = false;
-  
+  public isEdit: boolean = true;
+  public articleId: string = '';
+  public url: string;
+
   afuConfig = {
     multiple: false,
     formatsAllowed: ".jpg,.png,.gif,.jpeg",
@@ -44,19 +46,42 @@ export class ArticleNewComponent implements OnInit {
     private _articleService: ArticleService,
     private _route: ActivatedRoute,
     private _router: Router
-  ) {}
+  ) {
+    this.url = Global.url;
+  }
 
   ngOnInit(): void {
+    this._route.params.subscribe((params: Params) => {
+      this.articleId = params["id"];
+
+      this.getArticle(this.articleId);
+    });
+  }
+
+  getArticle(articleId: string) {
+    this._articleService.getArticle(articleId).subscribe(
+      response => {
+        if (response.status == "success") {
+          this.article = response.article;
+        } else {
+          this._router.navigate(['/home']);
+        }
+      },
+      error => {
+        console.log("ERROR", error);
+        this._router.navigate(['/home']);
+      }
+    );
   }
 
   onSubmit() {
-    this._articleService.create(this.article).subscribe(
+    this._articleService.update(this.articleId, this.article).subscribe(
       response => {
         if (response.status == "success") {
           this.status = "success";
           this.article.title = '';
           this.article.content = '';
-          this._router.navigate(['/blog']);
+          this._router.navigate(['/blog/articulo/', this.article._id]);
         } else {
           this.status = "error";
         }

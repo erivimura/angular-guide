@@ -34,7 +34,7 @@ export class ArticleComponent implements OnInit {
      
   }
 
-  getArticle(articleId: number) {
+  getArticle(articleId: string) {
     this._articleService.getArticle(articleId).subscribe(
       response => {
         if (response.status == "success") {
@@ -49,4 +49,16 @@ export class ArticleComponent implements OnInit {
       }
     );
   }
+
+  deleteArticle(articleId: string) {
+    this._articleService.delete(articleId).subscribe(
+      response => {
+        this._router.navigate(['/blog']);
+      },
+      error => {
+        console.log("ERROR", error);
+      }
+    );
+  }
+
 }
